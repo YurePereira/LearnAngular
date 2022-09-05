@@ -1,0 +1,13 @@
+
+.form-control {
+    border-radius: 0;
+    border-width: 2px;
+}
+
+#frm_contact .form-validation p:last-child {
+    margin-bottom: 0;
+}
+
+#frm_contact .ng-invalid.ng-touched {
+    border: 2px solid #ff1b1b;
+}

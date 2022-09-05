@@ -1,0 +1,41 @@
+<h3>Formulário de contato:</h3>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" id="frm_contact">
+
+    <!-- Name: -->
+    <div class="mb-3">
+        <label for="txt_name" class="form-label">Nome:</label>
+        <input type="text" class="form-control" id="txt_name" [(ngModel)]="contact.name" name="txt_name" required="required" #name="ngModel">
+    </div>
+    <!-- Email: -->
+    <div class="mb-3">
+        <label for="txt_email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="txt_email" [(ngModel)]="contact.email" name="txt_email" required="required" email #email="ngModel">
+    </div>
+    <!-- Phone: -->
+    <div class="mb-3">
+        <label for="txt_phone" class="form-label">Telefone:</label>
+        <input type="text" class="form-control" id="txt_phone" [(ngModel)]="contact.phone" name="txt_phone" required="required" #phone="ngModel">
+    </div>
+    <!-- Message -->
+    <div class="mb-3">
+        <label for="txt_message" class="form-label">Mensagem:</label>
+        <textarea class="form-control" id="txt_message" rows="3" [(ngModel)]="contact.message" name="txt_message" required="required" #message="ngModel"></textarea>
+    </div>
+    <div class="mb-3">
+        <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+
+    <div class="form-validation alert alert-danger"
+        *ngIf="(!name.valid && name.touched) ||
+            (!email.valid && email.touched) ||
+            (!phone.valid && phone.touched) ||
+            (!message.valid && message.touched)"
+        role="alert">
+        <p *ngIf="!name.valid && name.touched">Campo nome invalido!</p>
+        <p *ngIf="!email.valid && email.touched">Campo email invalido!</p>
+        <p *ngIf="!phone.valid && phone.touched">Campo telefone invalido!</p>
+        <p *ngIf="!message.valid && message.touched">Campo mensagem invalido!</p>
+    </div>
+
+</form>
